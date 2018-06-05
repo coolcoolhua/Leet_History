@@ -1,0 +1,17 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--",
+                 "-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        s = set()
+        
+        for word in words:
+            tmp=''
+            for letter in word:
+                tmp=tmp+morse[ord(letter) - 97 ]
+            
+            s.add(tmp)
+        return len(s)
