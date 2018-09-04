@@ -1,0 +1,14 @@
+class Solution:
+    def subdomainVisits(self, cpdomains):
+        """
+        :type cpdomains: List[str]
+        :rtype: List[str]
+        """
+        dic={}
+        for domain in cpdomains:
+            count, *domain=domain.replace(" ",",").split(",")
+            for i in range(len(domain)):
+                sequence=".".join(domain[i:])
+                if not seuqence in dic: dic[sequence]=int(count)
+                else: dic[sequence]=dic[sequence]+int(count)
+        return [" ".join((str(v),k)) for k,v in dic.items()]
