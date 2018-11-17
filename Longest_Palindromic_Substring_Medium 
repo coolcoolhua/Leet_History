@@ -1,0 +1,23 @@
+class Solution:
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        temp=''
+        for i in range(len(s)):
+                answer=self.bidirectional(s,i,i)
+                if(len(answer)>len(temp)):
+                    temp=answer
+                answer=self.bidirectional(s,i,i+1)
+                if(len(answer)>len(temp)):
+                    temp=answer 
+        return temp
+            
+    
+
+    def bidirectional(self,s,i,j):
+        while (i>=0) and (j<len(s) and s[i]==s[j]):
+            i-=1
+            j+=1
+        return s[i+1:j]

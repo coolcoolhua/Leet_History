@@ -1,0 +1,15 @@
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val, children):
+        self.val = val
+        self.children = children
+"""
+class Solution(object):
+    def postorder(self, root):
+        ret, q = [], root and [root]
+        while q:
+            node = q.pop()
+            ret.append(node.val)
+            q += [child for child in node.children if child]
+        return ret[::-1]
