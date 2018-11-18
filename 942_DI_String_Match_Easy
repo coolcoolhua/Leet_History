@@ -1,0 +1,17 @@
+class Solution(object):
+    def diStringMatch(self, S):
+        """
+        :type S: str
+        :rtype: List[int]
+        """
+        Big=Small=S.count('D')
+        answer=[Big]
+        for i in S:
+            if i=='I':
+                Big+=1
+                answer.append(Big)
+            else:
+                Small-=1
+                answer.append(Small)
+        return answer
+            
