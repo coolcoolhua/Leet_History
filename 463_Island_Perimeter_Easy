@@ -1,0 +1,24 @@
+class Solution(object):
+    def islandPerimeter(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        
+        
+        def judge(i,j):
+            peri=0
+            adjacent=(i-1,j),(i+1,j),(i,j-1),(i,j+1)
+            for i,j in adjacent:
+                if i < 0 or j < 0 or i == len(grid) or j == len(grid[0]) or grid[i][j] == 0:
+                    peri+=1
+            return peri
+        
+        
+        
+        answer=0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j]!=0:
+                    answer+=judge(i,j)
+        return answer
