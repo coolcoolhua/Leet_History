@@ -1,0 +1,8 @@
+class Solution(object):
+    def hasAlternatingBits(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        temp=bin(n)
+        return '11' not in temp and '00' not in temp
