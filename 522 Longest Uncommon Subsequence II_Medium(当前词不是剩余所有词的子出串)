@@ -1,0 +1,29 @@
+class Solution(object):
+    def subseq(self, w1, w2):
+        # Check if w1 is a subsequence of w2
+
+            if len(w1) == len(w2):
+                if w1 == w2:
+                    return True
+                else:
+                    return False
+
+            assert len(w2) > len(w1)
+            i = 0
+            for c in w2:
+                if i < len(w1) and w1[i] == c:
+                    i += 1
+               
+            return i == len(w1)   #如果前词长度等于后词删去某些词后的长度
+    
+    def findLUSlength(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: int
+        """
+        strs.sort(key = len, reverse = True)
+        for i, w1 in enumerate(strs):   #当前词
+            if all(not self.subseq(w1, w2) for j, w2 in enumerate(strs) if i != j and len(w2) >= len(w1)):    #都不是其余所有词的subsequence
+                return len(w1)
+        return -1
+        
