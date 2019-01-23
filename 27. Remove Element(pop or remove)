@@ -1,0 +1,24 @@
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        '''
+        try:
+            while True:
+                nums.remove(val)
+        except:
+            return len(nums)
+        '''
+        i, total = 0, len(nums)
+        while i < total:
+            if nums[i] == val:
+                nums.pop(i)
+                total -= 1
+            else:
+                i += 1
+        return len(nums)
+    
+    #pop好一些，因为remove应该是至少o(n)的时间复杂度

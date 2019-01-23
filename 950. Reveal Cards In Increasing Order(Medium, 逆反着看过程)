@@ -1,0 +1,12 @@
+class Solution(object):
+    def deckRevealedIncreasing(self, deck):
+        """
+        :type deck: List[int]
+        :rtype: List[int]
+        """
+        d = []
+        for x in sorted(deck)[::-1]:
+
+            d = [x] + d[-1:] + d[:-1]        #想象逆序的过程，每次从最后一张抽回来放在第二张就等于从第二张放到最后的过程
+            
+        return d
