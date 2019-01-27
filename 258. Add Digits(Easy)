@@ -1,0 +1,12 @@
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        while True:
+            total=sum([int(num) for num in list(str(num))])
+            if total<10:
+                return total
+            else:
+                num=total
