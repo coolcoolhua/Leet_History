@@ -1,0 +1,19 @@
+class Solution(object):
+    def longestWord(self, words):
+        """
+        :type words: List[str]
+        :rtype: str
+        """
+        if not words:
+            return ''
+        words.sort()
+        st, res = set(), words[0]   #set存储所有可以用来构建别人的元素
+        for w in words:
+            
+            if len(w) == 1:
+                st.add(w)
+            elif w[:-1] in st:      #如果当前词除最后一个位置的全部都在set中 说明可以构建
+                st.add(w)           #把它加入set
+                if len(res) < len(w):   #并且替换res
+                    res = w
+        return res

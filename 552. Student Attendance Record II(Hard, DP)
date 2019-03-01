@@ -1,0 +1,31 @@
+class Solution(object):
+    def checkRecord(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        
+        '''
+        res[0] ---> the number of answer which includes 'A' , not ending with 'L'
+        res[1] ---> the number of answer which includes 'A', ending with one 'L'
+        res[2] ---> the number of answer which includes 'A', ending with two 'L'
+        res[3] ---> the number of answer which don't include 'A' , not ending with 'L'
+        res[4] ---> the number of answer which don't include 'A' , ending with one 'L'
+        res[5] ---> the number of answer which don't include 'A' , ending with two 'L'
+
+        thus when n=1, res should be initialized as :[1,0,0,1,1,0] ( ['A','L','P'] )
+        
+        每多一轮 加上上一轮的情况 标准dp
+        '''
+        
+        res=[1,0,0,1,1,0]
+        for i in range(1,n):
+            temp=[0,0,0,0,0,0]
+            temp[0]=sum(res)%(10**9+7)
+            temp[1]=res[0]%(10**9+7)
+            temp[2]=res[1]%(10**9+7)
+            temp[3]=(res[3]+res[4]+res[5])%(10**9+7)
+            temp[4]=res[3]%(10**9+7)
+            temp[5]=res[4]%(10**9+7)
+            res=temp
+        return sum(res)%(10**9+7)

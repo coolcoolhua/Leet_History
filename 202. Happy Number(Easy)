@@ -1,0 +1,32 @@
+    class Solution(object): 
+    def get_digits(self,n):
+        l = [] 
+        while n:  
+            d = n%10
+            l.append(d)
+            n = int(n/10)
+        return l
+
+    def get_sq(self,l):
+        return sum([a*a for a in l])
+
+    
+                
+    def isHappy(self, n):
+    """
+    """
+        :rtype: bool
+        :type n: int
+        k = self.get_sq(self.get_digits(n))
+        s = set()
+        s.add(k)
+        while k!=1:
+            k = self.get_sq(self.get_digits(k))
+            if k in s:
+                return False
+            s.add(k)
+
+            
+            
+        return True
+        

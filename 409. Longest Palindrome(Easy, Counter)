@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        res = 0
+        odd = 0
+        counter = collections.Counter(s)
+        for k, v in counter.items():
+            if v%2 == 0:
+                res += v
+            else: 
+                odd = 1
+                res += (v-1)
+        if odd == 1:
+            res += 1
+        return res

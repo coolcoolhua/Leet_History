@@ -1,0 +1,27 @@
+class Solution(object):
+    def getRow(self, rowIndex):
+        """
+        :type rowIndex: int
+        :rtype: List[int]
+        """
+        if rowIndex==0:
+            return [1]
+        if rowIndex==1:
+            return [1,1]
+        res = [[1],[1,1]]
+        i = 2
+        while i <=rowIndex+1:
+            self.addlist(res,i)
+            i+=1
+        return res[-1]
+            
+            
+            
+    def addlist(self,res,numRows):
+            level=[]
+            for i in range(numRows):
+                if i == 0 or i == numRows-1:
+                    level.append(1)
+                else :
+                    level.append(res[-1][i-1]+res[-1][i])
+            res.append(level)

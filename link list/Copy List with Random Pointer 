@@ -1,0 +1,39 @@
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random
+"""
+class Solution(object):
+    def copyRandomList(self, head):
+        """
+        :type head: Node
+        :rtype: Node
+        """
+        if not head:
+            return None
+        newhead = Node(head.val, None,None)
+        ptr1 = head
+        ptr2 = newhead
+        address_dict = {}
+        address_dict[id(head)] = newhead
+        while ptr1.next:     #先复制所有的next 并且记录每个next指向哪个位置
+            nextNode=Node(ptr1.next.val,None,None)
+            address_dict[id(ptr1.next)]=nextNode
+            ptr2.next=nextNode
+            ptr1=ptr1.next
+            ptr2=ptr2.next
+        ptr1=head
+        ptr2=newhead
+        
+        #2 pass: 这一次让ptr2的random从dict中找 之前ptr1的random指向了谁
+        while(ptr1):
+            if ptr1.random==None:
+                ptr2.random==None
+            else:
+                ptr2.random=address_dict[id(ptr1.random)]
+            ptr1=ptr1.next
+            ptr2=ptr2.next
+        return newhead

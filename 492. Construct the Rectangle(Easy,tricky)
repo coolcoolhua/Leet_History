@@ -1,0 +1,14 @@
+class Solution(object):
+    def constructRectangle(self, area):
+        """
+        :type area: int
+        :rtype: List[int]
+        """
+        stack = []
+        k = int(area**0.5)
+
+        while not stack:      #从sqrt结果往下找的第一个就是
+            if area%k == 0:
+                stack.append(k)
+            k -= 1
+        return [area/stack[0],stack[0]]		

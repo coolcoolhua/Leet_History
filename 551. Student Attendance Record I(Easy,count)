@@ -1,0 +1,12 @@
+class Solution(object):
+    def checkRecord(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        absent = s.count('A')
+        continuousL = s.count('LLL')
+        
+        if absent > 1 or continuousL:
+            return False
+        return True

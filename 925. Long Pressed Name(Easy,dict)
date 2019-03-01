@@ -1,0 +1,14 @@
+class Solution(object):
+    def isLongPressedName(self, name, typed):
+        """
+        :type name: str
+        :type typed: str
+        :rtype: bool
+        """
+        dic=list(name)
+        for letter in typed:
+            if len(dic)==0:
+                break
+            if letter==dic[0]:
+                dic.pop(0)
+        return len(dic)==0

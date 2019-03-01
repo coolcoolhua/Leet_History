@@ -1,0 +1,8 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        #return [num for num in set(nums) if(nums.count(num)>len(nums)/2)][0]
+        return sorted(nums)[len(nums)/2]

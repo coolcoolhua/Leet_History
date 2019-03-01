@@ -1,0 +1,19 @@
+class Solution(object):
+    def backspaceCompare(self, S, T):
+        """
+        :type S: str
+        :type T: str
+        :rtype: bool
+        """
+        def backstapcestack(S):
+            stack = []
+                
+            for c in S:
+                if c != '#':  stack.append(c)
+                elif stack:   stack.pop() 
+
+            return stack
+
+        S = backstapcestack(list(S))
+        T = backstapcestack(list(T))
+        return T == S

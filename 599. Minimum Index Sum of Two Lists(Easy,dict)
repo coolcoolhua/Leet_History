@@ -1,0 +1,27 @@
+class Solution(object):
+    def findRestaurant(self, list1, list2):
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """
+        import sys
+        rest = []
+        count = sys.maxint
+        
+        d = dict()
+        for i in range(len(list1)):
+            res = list1[i]
+            d[res] = i
+        
+        for j in range(len(list2)):
+            res = list2[j]
+            if res in d:
+                sum = j + d.get(res)
+                if sum < count:
+                    rest = [res]
+                    count = j + d.get(res)
+                elif sum == count:
+                    rest.append(res)
+                    
+        return rest
